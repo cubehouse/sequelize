@@ -249,9 +249,10 @@ export class PostgresQueryInterface extends PostgresQueryInterfaceTypescript {
       return;
     }
 
+    const extractedTableName = this.queryGenerator.extractTableDetails(tableName).tableName;
     const getTableName =
       (!options || !options.schema || options.schema === 'public' ? '' : `${options.schema}_`) +
-      tableName;
+      extractedTableName;
 
     const attributes = model.modelDefinition.attributes;
 
